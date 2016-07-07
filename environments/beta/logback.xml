@@ -1,0 +1,25 @@
+<configuration scan="true">
+
+    <jmxConfigurator/>
+
+    <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+        <resetJUL>true</resetJUL>
+    </contextListener>
+    <appender name="UDP" class="com.despegar.library.logging.logback.UdpAppender">
+        <addr>UDP-MISC01:32804</addr>
+        <layout>
+            <pattern><![CDATA[%d [${HOSTNAME}] [usrId: %mdc{X-User-Id:-}, uow: %mdc{X-UOW:-}, reqId: %mdc{X-RequestId:-}] %-5level %logger{36} - %msg %n]]></pattern>
+        </layout>
+    </appender>
+
+    <logger name="com.despegar.library" level="ERROR"/>
+    <logger name="com.despegar.framework" level="WARN"/>
+    <logger name="com.despegar.alfred" level="WARN"/>
+    <logger name="org.eclipse.jetty" level="WARN"/>
+    <logger name="org.springframework" level="WARN"/>
+
+    <root level="INFO">
+        <appender-ref ref="UDP"/>
+    </root>
+
+</configuration>

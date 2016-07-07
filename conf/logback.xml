@@ -1,0 +1,18 @@
+<configuration scan="true">
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <layout>
+            <pattern><![CDATA[%d [${HOSTNAME}] [usrId: %mdc{X-User-Id:-}, uow: %mdc{X-UOW:-}, reqId: %mdc{X-RequestId:-}] %-5level %logger{36} - %msg %n]]></pattern>
+        </layout>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+    <logger name="com.despegar.library" level="ERROR"/>
+    <logger name="com.despegar.framework" level="WARN"/>
+    <logger name="com.despegar.alfred" level="WARN"/>
+    <logger name="org.eclipse.jetty" level="WARN"/>
+
+</configuration>

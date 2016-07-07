@@ -1,0 +1,4 @@
+#!/bin/bash
+cd $(dirname "$0")
+sbt packageTar
+mv target/sm-router.tar target/vr-sm-router-$1.tar
