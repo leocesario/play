@@ -1,3 +1,4 @@
 package com.despegar.indec.hangar.api
 
-case class ExampleRequest(values: Set[String])
+case class ExampleRequest(id: String,
+                          values: List[String])

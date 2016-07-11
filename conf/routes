@@ -1,20 +1,7 @@
 # Routes
 
-# Metadata --------------------------------------------------------------------------------------------------------------------
-GET           /vacation-rentals/metadata/sm-router                             @com.despegar.vr.commons.metadata.MetadataController.metadata
-GET           /vacation-rentals/metadata/sm-router/cluster-info                @com.despegar.vr.commons.cloudia.CloudiaController.clusterInfo
-
-# Cache -----------------------------------------------------------------------------------------------------------------------
-PUT           /vacation-rentals/metadata/sm-router/cache/start                 @com.despegar.vr.commons.cache.controller.CacheController.start()
-PUT           /vacation-rentals/metadata/sm-router/cache/stop                  @com.despegar.vr.commons.cache.controller.CacheController.stop()
-GET           /vacation-rentals/metadata/sm-router/cache/status                @com.despegar.vr.commons.cache.controller.CacheController.status()
-GET           /vacation-rentals/metadata/sm-router/cache/cluster-status        @com.despegar.vr.commons.cache.controller.CacheController.clusterStatus()
-DELETE        /vacation-rentals/metadata/sm-router/cache                       @com.despegar.vr.commons.cache.controller.CacheController.remove()
-
-
 # Services --------------------------------------------------------------------------------------------------------------------
-GET           /vrsm/ads                                                        @com.despegar.vr.smrouter.controllers.SearchController.search()
+GET        /v3/hangar            @com.despegar.indec.hangar.controllers.ExampleController.exampleRoute()
+GET        /v3/hangar/:id        @com.despegar.indec.hangar.controllers.ExampleController.anotherExampleRoute(id)
 
-GET           /vrsmrouter/hot-cities                                           @com.despegar.vr.smrouter.controllers.AdminController.hotCities()
-GET           /vrsmrouter/total-ads                                            @com.despegar.vr.smrouter.controllers.AdminController.totalAds()
-POST          /vrsmrouter/rebuild                                              @com.despegar.vr.smrouter.controllers.AdminController.rebuild()
+

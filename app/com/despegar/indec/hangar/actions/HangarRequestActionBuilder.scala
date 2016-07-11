@@ -4,9 +4,9 @@ import com.despegar.vr.commons.actions.ActionBuilder
 import play.api.mvc.{Request => PlayRequest}
 import scaldi.{Injectable, Injector}
 
-class RouterRequestActionBuilder(implicit inj: Injector) extends ActionBuilder[RouterRequest]
+class HangarRequestActionBuilder(implicit inj: Injector) extends ActionBuilder[HangarRequest]
                                                                with Injectable {
 
-  override def build[A](request: PlayRequest[A]) = RouterRequest(request.headers.toSimpleMap, request.body)
+  override def build[A](request: PlayRequest[A]) = HangarRequest(request.headers.toSimpleMap, request.body)
 
 }

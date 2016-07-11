@@ -1,35 +1,21 @@
 package com.despegar.indec.hangar.controllers
 
-import com.despegar.indec.hangar.actions.RouterRequest
-import com.despegar.indec.hangar.external.newrelic.service.NewRelicService
+import com.despegar.indec.hangar.actions.HangarRequest
+import com.despegar.indec.hangar.api.ExampleRequest
 import com.despegar.indec.hangar.services.ExampleService
-import com.despegar.vr.commons.cache.maybe.CacheHit
 import com.despegar.vr.commons.controllers.{Controller, ResultHandler}
-import RouterRequest
-import RouterRequest
-import scaldi.{Injectable, Injector}
+import scaldi.Injector
 
-class ExampleController(implicit val inj: Injector) extends Controller with Injectable with ResultHandler {
+class ExampleController(implicit val inj: Injector) extends Controller with ResultHandler {
 
-  val newRelicService = inject[NewRelicService]
-  val searchService = inject[ExampleService]
+  val exampleService = inject[ExampleService]
 
-  def hotCities() = Action[RouterRequest]()() { implicit request =>
-    newRelicService.getHotCities(request){
-      case CacheHit(cities) => Ok(cities) as JSON
-    }
+  def exampleRoute() = Action[HangarRequest]()() { implicit request =>
+    Ok(exampleService.exampleMethod)
   }
 
-  def totalAds() = Action[RouterRequest]()() { implicit request =>
-    newRelicService.getTotalAdsFromCities(request){
-      case CacheHit(totalAds) => Ok(totalAds) as JSON
-    }
+  def anotherExampleRoute(id: String) =  Action[HangarRequest,ExampleRequest]()() { implicit request =>
+    Ok(request.content)
   }
-
-  def rebuild() = Action[RouterRequest]()() { implicit request =>
-    searchService.rebuild()
-    Ok()
-  }
-
 
 }
